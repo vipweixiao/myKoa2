@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>koa-compose</title>
+</head>
+
+<body>
+  <script src="./myKoa2/myCompare.js"></script>
+ 
+  <script>
+
+    let ary = [];
+
+    let fn1 = (ctx, next) => {
+      console.log('fn1', ctx);
+      next();
+      console.log('next-fn1');
+    }
+
+    let fn2 = (ctx, next) => {
+      console.log('fn2', ctx);
+      next();
+      console.log('next-fn2');
+    }
+
+    let fn3 = (ctx, next) => {
+      console.log('fn3', ctx);
+      next();
+      console.log('next-fn3');
+    }
+
+    ary.push(fn1);
+    ary.push(fn2);
+    ary.push(fn3);
+
+    let ctx = {
+      name: 'ctx'
+    }
+    let fnNext = () => {
+      console.log('fnNext');
+    }
+    let result = compare(ary);
+    let retFin = result(ctx, fnNext)
+    console.log(result);
+    console.log(retFin);
+    document.write(retFin);
+
+  </script>
+
+
+ 
+</body>
+
+</html>
